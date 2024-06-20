@@ -1,0 +1,138 @@
+import { works } from "../js/helpers.js";
+
+const pageId = document.body.getAttribute("data-page-id");
+
+if (pageId === "home") {
+  const videos = document.querySelectorAll(".home-video");
+
+  const setVideo = (video, time) => {
+    video.currentTime = time;
+    video.addEventListener("mouseenter", function () {
+      video.currentTime = 0;
+      video.play();
+    });
+    video.addEventListener("mouseleave", function () {
+      video.currentTime = time;
+      video.pause();
+    });
+  };
+
+  videos.forEach((video) => {
+    const name = video.getAttribute("name");
+    if (name == "hqses") {
+      setVideo(video, 1);
+    } else if (name == "beast-mode") {
+      setVideo(video, 4);
+    } else if (name == "matame") {
+      setVideo(video, 0);
+    } else if (name == "lqtd") {
+      setVideo(video, 8);
+    } else if (name == "jfk") {
+      setVideo(video, 0);
+    } else if (name == "ismael") {
+      setVideo(video, 0);
+    } else if (name == "afro-groove") {
+      setVideo(video, 1.35);
+    } else if (name == "verdad") {
+      setVideo(video, 1);
+    }
+  });
+}
+
+const initializeGalleryArray = (images, path, alt) => {
+  const galleryArray = [];
+  images.forEach((image, i) => {
+    if (i < 10) {
+      i = `0${i}`;
+    }
+    galleryArray.push({
+      src: `${path}${image}`,
+      alt: `${alt} ${i + 1}`,
+    });
+  });
+  return galleryArray;
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const galleryContainer = document.querySelector(".anita-grid-gallery");
+
+  const galleries = {
+    hqses: initializeGalleryArray(
+      works.hqses,
+      "vers-h-man/hqses/",
+      "Hasta Que Salga El Sol by Vers-H-Man - Photo"
+    ),
+    beastMode: initializeGalleryArray(
+      works.beastMode,
+      "da-ink/beast-mode/",
+      "Beast Mode by Da Ink - Photo"
+    ),
+    matame: [],
+    lqtd: initializeGalleryArray(
+      works.lqtd,
+      "mariana/lqtd/",
+      "Las Que Te Dediqué by Mariana Gueza - Photo"
+    ),
+    jfk: [],
+    ismael: [],
+    afroGroove: [],
+    verdad: [],
+  };
+
+  const gallery = galleries[pageId] || [];
+
+  // Create an array to store promises for each image load
+  const imageLoadPromises = [];
+
+  gallery.forEach((image, index) => {
+    const img = new Image();
+    img.src = `../img/artists/${image.src}`;
+    img.alt = `${image.alt}${index + 1}`;
+
+    const imgLoadPromise = new Promise((resolve, reject) => {
+      img.onload = () => {
+        resolve(img);
+      };
+      img.onerror = (err) => reject(err);
+    });
+
+    imageLoadPromises.push(imgLoadPromise);
+  });
+
+  // Wait for all image promises to resolve
+  Promise.all(imageLoadPromises)
+    .then((images) => {
+      images.forEach((img) => {
+        const galleryItem = document.createElement("div");
+        galleryItem.classList.add("anita-grid-gallery-item");
+
+        const gridItemInner = document.createElement("div");
+        gridItemInner.classList.add("anita-grid-item__inner");
+
+        const gridItemImage = document.createElement("div");
+        gridItemImage.classList.add("anita-grid-item__image");
+
+        img.classList.add("anita-lazy");
+        img.dataset.src = img.src;
+
+        gridItemImage.appendChild(img);
+        gridItemInner.appendChild(gridItemImage);
+
+        const link = document.createElement("a");
+        link.classList.add("anita-lightbox-link");
+        link.href = img.src;
+        link.dataset.size = `${img.width}x${img.height}`;
+
+        gridItemInner.appendChild(link);
+        galleryItem.appendChild(gridItemInner);
+        galleryContainer.appendChild(galleryItem);
+      });
+
+      // Dispatch custom event after gallery is created
+      const galleryCreatedEvent = new Event("galleryCreated");
+      document.dispatchEvent(galleryCreatedEvent);
+    })
+    .catch((error) => {
+      console.error("Error loading images:", error);
+    });
+});
