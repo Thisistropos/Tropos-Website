@@ -23,7 +23,7 @@ const anita_config = {
       "La Verdad (Cap 2)": "albums-grid-3col.html",
     },
     "About Us": "about-us.html",
-    Contact: "contact.html",
+    Contact: "../contact.html",
   },
 
   // Option to stick the header to the top of the page
@@ -2271,7 +2271,11 @@ class Anita {
 }
 
 /* --- Activate Anita Core --- */
-
-document.addEventListener("galleryCreated", () => {
+const pageId = document.body.getAttribute("data-page-id");
+if (pageId === null) {
   let anita = new Anita(anita_config);
-});
+} else {
+  document.addEventListener("galleryCreated", () => {
+    let anita = new Anita(anita_config);
+  });
+}

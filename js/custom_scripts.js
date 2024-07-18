@@ -59,24 +59,29 @@ document.addEventListener("DOMContentLoaded", () => {
   const galleries = {
     hqses: initializeGalleryArray(
       works.hqses,
-      "vers-h-man/hqses/",
+      "artists/vers-h-man/hqses/",
       "Hasta Que Salga El Sol by Vers-H-Man - Photo"
     ),
     beastMode: initializeGalleryArray(
       works.beastMode,
-      "da-ink/beast-mode/",
+      "artists/da-ink/beast-mode/",
       "Beast Mode by Da Ink - Photo"
     ),
     matame: [],
     lqtd: initializeGalleryArray(
       works.lqtd,
-      "mariana/lqtd/",
+      "artists/mariana/lqtd/",
       "Las Que Te Dediqué by Mariana Gueza - Photo"
     ),
     jfk: [],
     ismael: [],
     afroGroove: [],
     verdad: [],
+    about: initializeGalleryArray(
+      works.samhain,
+      "page-about/fun/",
+      "Tropos Team - Photo"
+    ),
   };
 
   const gallery = galleries[pageId] || [];
@@ -86,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   gallery.forEach((image, index) => {
     const img = new Image();
-    img.src = `../img/artists/${image.src}`;
+    img.src = `../img/${image.src}`;
     img.alt = `${image.alt}${index + 1}`;
 
     const imgLoadPromise = new Promise((resolve, reject) => {

@@ -522,6 +522,13 @@ textarea:focus {
   background: var(--anita-s-input-focus-background);
   border-color: var(--anita-s-input-focus-border);
 }
+
+input:autofill,
+input:-webkit-autofill {
+  -webkit-text-fill-color: var(--anita-s-input-focus-text);
+  -webkit-box-shadow: 0 0 0px 1000px var(--anita-s-input-focus-background) inset;
+}
+
 textarea {
   height: 197px;
 }
@@ -3325,4 +3332,12 @@ img.pswp__img {
 .see-more {
   font-size: 1.3rem;
   justify-self: end;
+}
+
+.anita-contact-details__list .anita-socials-list li {
+  margin: 0;
+}
+
+section.about-intro {
+  margin-bottom: 5.6rem;
 }
