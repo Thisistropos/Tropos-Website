@@ -59,6 +59,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const galleryContainer = document.querySelector(".anita-grid-gallery");
 
   const galleries = {
+    matameLaDuda: initializeGalleryArray(
+      works.matameLaDuda,
+      "artists/johan-sanabria/matame-la-duda/",
+      "Matame La Duda by Johan Sanabria- Photo"
+    ),
+    ismael: initializeGalleryArray(
+      works.ismael,
+      "artists/mateo/ismael/",
+      "Ismael by Mateo - Photo"
+    ),
     hqses: initializeGalleryArray(
       works.hqses,
       "artists/vers-h-man/hqses/",
@@ -69,21 +79,30 @@ document.addEventListener("DOMContentLoaded", () => {
       "artists/da-ink/beast-mode/",
       "Beast Mode by Da Ink - Photo"
     ),
-    matame: [],
+    samhain: initializeGalleryArray(
+      works.samhain,
+      "artists/samhain/samhain-1/",
+      "Samhain - Photo"
+    ),
     lqtd: initializeGalleryArray(
       works.lqtd,
       "artists/mariana/lqtd/",
       "Las Que Te Dediqué by Mariana Gueza - Photo"
     ),
     jfk: [],
-    ismael: [],
     afroGroove: [],
-    verdad: [],
-    about: initializeGalleryArray(
-      works.samhain,
-      "page-about/fun/",
-      "Tropos Team - Photo"
+    laVerdad: initializeGalleryArray(
+      works.laVerdad,
+      "artists/jean-salcedo/la-verdad/",
+      "La Verdad by Jean Salcedo - Photo"
     ),
+    about: [
+      initializeGalleryArray(
+        works.samhain,
+        "artists/samhain/samhain-1/",
+        "Tropos Team - Photo"
+      ),
+    ],
   };
 
   const gallery = galleries[pageId] || [];

@@ -22,7 +22,7 @@ const anita_config = {
       "Afrohouse Groot": "/works/afrohouse-groot.html",
       "La Verdad": "/works/la-verdad.html",
     },
-    "About Us": "about-us.html",
+    "About Us": "../about-us.html",
     Contact: "../contact.html",
   },
 
