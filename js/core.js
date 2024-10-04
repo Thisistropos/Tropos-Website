@@ -12,15 +12,15 @@ const anita_config = {
   // Use 'Label' : 'url' for menu items and 'Label' : { ... } for Submenus. Don't forget about commas after each item.
   main_menu: {
     Works: {
-      "Afrohouse Groot": "/works/afrohouse-groot.html",
-      "Hasta Que Salga El Sol": "/works/hasta-que-salga-el-sol.html",
-      "Las Que Te Dedique...": "albums-grid-3col.html",
-      "La Verdad": "albums-grid-3col.html",
+      "Matame La Duda": "/works/matame-la-duda.html",
+      "Las Que Te Dedique...": "/works/las-que-te-dedique.html",
+      Ismaël: "/works/ismael.html",
       "Beast Mode": "/works/beast-mode.html",
-      Ismaël: "albums-grid-3col.html",
-      HDPL: "albums-grid-3col.html",
-      Loca: "albums-grid-3col.html",
-      "La Verdad (Cap 2)": "albums-grid-3col.html",
+      "Hasta Que Salga El Sol": "/works/hasta-que-salga-el-sol.html",
+      JFK: "/works/jfk.html",
+      Samhain: "/works/samhain.html",
+      "Afrohouse Groot": "/works/afrohouse-groot.html",
+      "La Verdad": "/works/la-verdad.html",
     },
     "About Us": "about-us.html",
     Contact: "../contact.html",

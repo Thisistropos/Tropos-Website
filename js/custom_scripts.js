@@ -35,6 +35,8 @@ if (pageId === "home") {
       setVideo(video, 1.35);
     } else if (name == "verdad") {
       setVideo(video, 1);
+    } else if (name == "samhain") {
+      setVideo(video, 3.99);
     }
   });
 }
