@@ -2,6 +2,15 @@ import { works } from "../js/helpers.js";
 
 const pageId = document.body.getAttribute("data-page-id");
 
+// const bodyClass = document.body.classList;
+
+// console.log("bodyClass", bodyClass.contains("is-loaded"));
+// if (bodyClass[0] !== ) {
+//   console.log("has not load yet");
+// } else {
+//   console.log("has loaded");
+// }
+
 if (pageId === "home") {
   const videos = document.querySelectorAll(".home-video");
 
