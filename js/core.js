@@ -1449,98 +1449,98 @@ class Anita {
     });
 
     // Contact Form
-    if (jQuery(".anita-contact-form").length) {
-      jQuery(".anita-contact-form").each(function () {
-        let $form = jQuery(this),
-          $response = $form.find(".anita-contact-form__response"),
-          formData,
-          flocker = {
-            field_changed: false,
-            field_interract: false,
-          };
+    // if (jQuery(".anita-contact-form").length) {
+    //   jQuery(".anita-contact-form").each(function () {
+    //     let $form = jQuery(this),
+    //       $response = $form.find(".anita-contact-form__response"),
+    //       formData,
+    //       flocker = {
+    //         field_changed: false,
+    //         field_interract: false,
+    //       };
 
-        $form.on("keyup", "input, textarea", function () {
-          flocker.field_interract = true;
-          $response.text("");
-        });
-        $form.on("change", "input, textarea", function () {
-          flocker.field_changed = true;
-          $response.text("");
-        });
-        $form.on("touchenter", "input, textarea", function () {
-          flocker.field_interract = true;
-          $response.text("");
-        });
-        $form.on("focus", "input, textarea", function () {
-          flocker.field_interract = true;
-          $response.text("");
-        });
+    //     $form.on("keyup", "input, textarea", function () {
+    //       flocker.field_interract = true;
+    //       $response.text("");
+    //     });
+    //     $form.on("change", "input, textarea", function () {
+    //       flocker.field_changed = true;
+    //       $response.text("");
+    //     });
+    //     $form.on("touchenter", "input, textarea", function () {
+    //       flocker.field_interract = true;
+    //       $response.text("");
+    //     });
+    //     $form.on("focus", "input, textarea", function () {
+    //       flocker.field_interract = true;
+    //       $response.text("");
+    //     });
 
-        $form.on("submit", function (e) {
-          e.preventDefault();
-          if (flocker.field_changed && flocker.field_interract) {
-            // Send Contact Form
-            if (_self.cursor) {
-              $form.addClass("is-busy");
-              _self.cursor.setState("is-busy");
-            }
-            formData = $form.serialize();
-            jQuery
-              .ajax({
-                type: "POST",
-                url: $form.attr("action"),
-                data: formData,
-              })
-              .done(function (response) {
-                $form.removeClass("is-busy");
-                if (_self.cursor) {
-                  _self.cursor.unsetState("is-busy");
-                }
-                $response
-                  .empty()
-                  .removeClass("anita-alert-danger")
-                  .addClass("anita-alert-success");
-                $response.html("<span>" + response + "</span>");
-                $form.find('input:not([type="submit"]), textarea').val("");
-                flocker.field_changed = false;
-                flocker.field_interract = false;
-              })
-              .fail(function (data) {
-                $form.removeClass("is-busy");
-                if (_self.cursor) {
-                  _self.cursor.unsetState("is-busy");
-                }
-                $response
-                  .empty()
-                  .removeClass("anita-alert-success")
-                  .addClass("anita-alert-danger");
-                $response.html("<span>" + data.responseText + "</span>");
-                $form.addClass("is-error");
-                setTimeout(
-                  function () {
-                    $form.removeClass("is-error");
-                  },
-                  500,
-                  $form
-                );
-                flocker.field_changed = false;
-                flocker.field_interract = false;
-              });
-          } else {
-            // Fil by script detected
-            $response.text($form.attr("data-fill-error"));
-            $form.addClass("is-error");
-            setTimeout(
-              function () {
-                $form.removeClass("is-error");
-              },
-              500,
-              $form
-            );
-          }
-        });
-      });
-    }
+    //     $form.on("submit", function (e) {
+    //       e.preventDefault();
+    //       if (flocker.field_changed && flocker.field_interract) {
+    //         // Send Contact Form
+    //         if (_self.cursor) {
+    //           $form.addClass("is-busy");
+    //           _self.cursor.setState("is-busy");
+    //         }
+    //         formData = $form.serialize();
+    //         jQuery
+    //           .ajax({
+    //             type: "POST",
+    //             url: $form.attr("action"),
+    //             data: formData,
+    //           })
+    //           .done(function (response) {
+    //             $form.removeClass("is-busy");
+    //             if (_self.cursor) {
+    //               _self.cursor.unsetState("is-busy");
+    //             }
+    //             $response
+    //               .empty()
+    //               .removeClass("anita-alert-danger")
+    //               .addClass("anita-alert-success");
+    //             $response.html("<span>" + response + "</span>");
+    //             $form.find('input:not([type="submit"]), textarea').val("");
+    //             flocker.field_changed = false;
+    //             flocker.field_interract = false;
+    //           })
+    //           .fail(function (data) {
+    //             $form.removeClass("is-busy");
+    //             if (_self.cursor) {
+    //               _self.cursor.unsetState("is-busy");
+    //             }
+    //             $response
+    //               .empty()
+    //               .removeClass("anita-alert-success")
+    //               .addClass("anita-alert-danger");
+    //             $response.html("<span>" + data.responseText + "</span>");
+    //             $form.addClass("is-error");
+    //             setTimeout(
+    //               function () {
+    //                 $form.removeClass("is-error");
+    //               },
+    //               500,
+    //               $form
+    //             );
+    //             flocker.field_changed = false;
+    //             flocker.field_interract = false;
+    //           });
+    //       } else {
+    //         // Fil by script detected
+    //         $response.text($form.attr("data-fill-error"));
+    //         $form.addClass("is-error");
+    //         setTimeout(
+    //           function () {
+    //             $form.removeClass("is-error");
+    //           },
+    //           500,
+    //           $form
+    //         );
+    //       }
+    //     });
+    //   });
+    // }
 
     // Preloader
     jQuery(document).ready(function () {
