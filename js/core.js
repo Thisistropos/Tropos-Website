@@ -12,6 +12,7 @@ const anita_config = {
   // Use 'Label' : 'url' for menu items and 'Label' : { ... } for Submenus. Don't forget about commas after each item.
   main_menu: {
     Works: {
+      Americanos: "/works/americanos.html",
       "Matame La Duda": "/works/matame-la-duda.html",
       "Las Que Te Dedique...": "/works/las-que-te-dedique.html",
       Ismaël: "/works/ismael.html",
@@ -66,7 +67,7 @@ const anita_config = {
   /* --- Localization --- */
   l10n: {
     // Footer Copyright string
-    copyright: "TROPOS Copyright &copy; 2024. All Rights Reserved.",
+    copyright: "TROPOS Copyright &copy; 2025. All Rights Reserved.",
 
     // The message that appears when visitors try to open context menu
     rcp_message: "Context menu is not allowed on this website",

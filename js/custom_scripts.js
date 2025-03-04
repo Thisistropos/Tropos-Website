@@ -15,17 +15,27 @@ if (pageId === "home") {
   const videos = document.querySelectorAll(".home-video");
 
   const setVideo = (video, time) => {
+    let isPlaying = false;
     video.currentTime = time;
-    video.addEventListener("mouseenter", function () {
-      video.currentTime = 0;
-      video.play();
+    video.addEventListener("pointerenter", function () {
+      if (!isPlaying) {
+        isPlaying = true;
+        video.currentTime = 0;
+        video.play();
+      }
     });
-    video.addEventListener("mouseleave", function () {
-      video.currentTime = time;
-      video.pause();
+
+    video.addEventListener("pointerleave", function () {
+      if (isPlaying) {
+        isPlaying = false;
+        video.pause();
+        video.currentTime = time;
+      }
     });
   };
 
+  // Aqui se setea el tiempo de inicio de cada video.
+  // Añadir un nuevo elseif para cada video agregado al home page.
   videos.forEach((video) => {
     const name = video.getAttribute("name");
     if (name == "hqses") {
@@ -46,6 +56,8 @@ if (pageId === "home") {
       setVideo(video, 1);
     } else if (name == "samhain") {
       setVideo(video, 3.99);
+    } else if (name == "americanos") {
+      setVideo(video, 8);
     }
   });
 }
@@ -67,6 +79,7 @@ const initializeGalleryArray = (images, path, alt) => {
 document.addEventListener("DOMContentLoaded", () => {
   const galleryContainer = document.querySelector(".anita-grid-gallery");
 
+  // Aqui se inicializan las galerias de cada artista.
   const galleries = {
     matameLaDuda: initializeGalleryArray(
       works.matameLaDuda,
